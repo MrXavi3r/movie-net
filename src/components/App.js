@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import Navbar from "./Navbar";
 import Searchbar from "./Searchbar";
+import MovieList from './MovieList'
 
 const apiKey = process.env.REACT_APP_API_KEY;
 // const base_URL = 'https://api.themoviedb.org/3/movie';
@@ -39,6 +40,7 @@ class App extends Component {
         handleSubmit={this.handleSubmit} 
         handleChange={this.handleChange}
         />
+        <MovieList movies={this.state.movies}/>
       </div>
     );
   }
