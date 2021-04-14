@@ -10,10 +10,10 @@ const apiKey = process.env.REACT_APP_API_KEY;
 class App extends Component {
   state = {
     movies: [],
-    searchTerm: "",
+    searchTerm: ""
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.state.searchTerm}`)
@@ -26,7 +26,7 @@ class App extends Component {
       });
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       searchTerm: e.target.value,
     });

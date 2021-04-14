@@ -5,7 +5,7 @@ import Movie from "./Movie";
 export default function MovieList(props) {
   return (
     <Container className="mt-5">
-      <Row md={4} xl={6}>
+      <Row md={2} xl={4}>
         {props.movies.map((movie) => {
           return (
             <CardGroup className="d-flex">
