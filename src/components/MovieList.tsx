@@ -17,9 +17,8 @@ export const MovieList: React.FC<Props> = ({movies}) => {
       <Row md={4} xl={6}>
         {movies.map((movie) => {
           return (
-            <CardGroup className="d-flex">
+            <CardGroup className="d-flex" key={movie.id}>
               <Movie
-                key={movie.id}
                 title={movie.title}
                 image={movie.poster_path}
                 overview={movie.overview}
