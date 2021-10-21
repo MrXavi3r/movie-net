@@ -1,32 +1,49 @@
 import React, { Component } from "react";
-import "../App.css";
 import Navbar from "./Navbar";
 import Searchbar from "./Searchbar";
-import MovieList from './MovieList'
+import {MovieList} from './MovieList'
 
 const apiKey = process.env.REACT_APP_API_KEY;
-// const base_URL = 'https://api.themoviedb.org/3/movie';
+
+interface iState {
+  movies: {
+    poster_path: string 
+    adult: boolean
+    overview: string
+    release_date: string
+    genre_ids: number[]
+    id: number
+    original_title: string
+    original_language: string
+    title: string
+    backdrop_path: string
+    popularity: number
+    vote_count: number
+    video: boolean
+    vote_average: number
+  }[],
+  searchTerm: string
+}
 
 class App extends Component {
-  state = {
+  state: iState = {
     movies: [],
     searchTerm: ""
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.state.searchTerm}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         this.setState({
           movies: [...data.results],
         });
       });
   };
 
-  handleChange = e => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({
       searchTerm: e.target.value,
     });

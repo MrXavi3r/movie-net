@@ -1,12 +1,21 @@
 import React from "react";
 import { Container, Row, CardGroup } from "react-bootstrap/";
-import Movie from "./Movie";
+import {Movie} from "./Movie";
 
-export default function MovieList(props) {
+type Props = {
+  movies: {
+    id: number
+    title: string
+    poster_path: string
+    overview: string
+  }[]
+}
+
+export const MovieList: React.FC<Props> = ({movies}) => {
   return (
     <Container className="mt-5">
-      <Row md={2} xl={6}>
-        {props.movies.map((movie) => {
+      <Row md={4} xl={6}>
+        {movies.map((movie) => {
           return (
             <CardGroup className="d-flex">
               <Movie
